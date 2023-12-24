@@ -6,24 +6,28 @@
 
     <ScrollView>
         <VerticalStackLayout
-            Padding="30,0"
+            Padding="20, 20"
             Spacing="25">
             <Image
-                Source="dotnet_bot.png"
-                HeightRequest="185"
+                Source="lab.png"
+                WidthRequest="450"
+                HeightRequest="250"
                 Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a race car number eight" />
+                SemanticProperties.Description="Laboranta fotogrāfija" />
 
             <Label
-                Text="Hello, World!"
+                Text="Ķīmisko elementu noteikšana"
                 Style="{StaticResource Headline}"
+                SemanticProperties.Description="Ķīmisko elementu noteikšana sausā šķeldā"
+                SemanticProperties.Hint="Ķīmisko elementu noteikšana sausā šķeldā"
                 SemanticProperties.HeadingLevel="Level1" />
 
             <Label
-                Text="Welcome to &#10;.NET Multi-platform App UI"
+                Text="Izvēlieties vēlomo operāciju"
                 Style="{StaticResource SubHeadline}"
                 SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+                SemanticProperties.Description="Izvēlieties vēlomo operāciju"
+                SemanticProperties.Hint="Izvēlieties vēlomo operāciju"/>
 
             <Button
                 x:Name="DeterminationOfHydrogen"
