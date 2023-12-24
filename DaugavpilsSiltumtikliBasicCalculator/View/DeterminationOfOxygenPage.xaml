@@ -5,9 +5,64 @@
              xmlns:viewmodel="clr-namespace:DaugavpilsSiltumtikliBasicCalculator.ViewModel"
              Title="Skābekļa satura noteikšana sausā šķeldā">
     <VerticalStackLayout>
-        <Label 
-            Text="DeterminationOfOxygenPage"
-            VerticalOptions="Center" 
+        <VerticalStackLayout Margin="0,20,0,20" WidthRequest="320">
+            <Label 
+                Text="Skābekļa saturs sausā bezpelnu šķeldā"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Skābekļa saturs sausā bezpelnu šķeldā, %; no LVS EN ISO 18125"
+                SemanticProperties.Hint="Skābekļa saturs sausā bezpelnu šķeldā, %; no LVS EN ISO 18125"
+                HorizontalOptions="Start"/>
+            <Entry 
+                x:Name="OxygenContentOfDryAshlessWoodChips"
+                Text="{Binding OxygenContentValue}"
+                Keyboard="Numeric"
+                HorizontalOptions="FillAndExpand"/>
+            <Picker x:Name="WoodType" Title="Koksnes veids" SelectedIndex="{Binding SelectedOxygenValue}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Nezināms koksnes veids</x:String>
+                        <x:String>Koka stumbrs bez mizas, skujām un lapām</x:String>
+                        <x:String>Vesels koks</x:String>
+                        <x:String>Mežizstrādes atliekas</x:String>
+                        <x:String>Miza</x:String>
+                        <x:String>Pameža koksne</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Margin="0,20,0,20" WidthRequest="320">
+            <Label 
+                Text="Pelnu saturs sausā šķeldā"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Pelnu saturs sausā šķeldā, %; noteikts saskaņā ar MK-20-4"
+                SemanticProperties.Hint="Pelnu saturs sausā šķeldā, %; noteikts saskaņā ar MK-20-4"
+                HorizontalOptions="Start"/>
+            <Entry 
+                x:Name="AshContentInDryWoodChips"
+                Text="{Binding AshContentValue}"
+                Keyboard="Numeric"
+                HorizontalOptions="FillAndExpand"/>
+        </VerticalStackLayout>
+
+        <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,20" WidthRequest="320">
+            <Label 
+                x:Name="ResultText"
+                HorizontalOptions="Start"
+                Text="Iegūtais rezultāts: "/>
+
+            <Label 
+                x:Name="ResultValue"
+                HorizontalOptions="Start"
+                Text="{Binding ResultValue}"/>
+        </HorizontalStackLayout>
+
+        <Button
+            x:Name="CalculateOxygen"
+            Text="Aprēķināt" 
+            SemanticProperties.Hint="Aprēķināt skābekļa saturu sausā šķeldā"
+            Command="{Binding CalculateOxygenCommand}"
             HorizontalOptions="Center" />
+
     </VerticalStackLayout>
 </ContentPage>
