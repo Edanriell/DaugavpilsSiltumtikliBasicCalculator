@@ -11,9 +11,9 @@ public partial class DeterminationOfOxygenViewModel : BaseViewModel
     [ObservableProperty]
     private decimal ashContentValue;
 
-    private decimal selectedOxygenValue;
+    private byte selectedOxygenValue;
 
-    public decimal SelectedOxygenValue
+    public byte SelectedOxygenValue
     {
         get => selectedOxygenValue;
         set
@@ -54,16 +54,18 @@ public partial class DeterminationOfOxygenViewModel : BaseViewModel
 
     public DeterminationOfOxygenViewModel()
     {
-        Title = "Skābekļa satura noteikšana sausā šķeldā";
         ResultValue = string.Empty;
     }
 
     [RelayCommand]
     private async Task CalculateOxygen()
     {
-        result = oxygenContentValue * ((100 - ashContentValue) / 100);
-        ResultValue = Convert.ToString(result);
+        await ValidateUserProvidedValues(oxygenContentValue, ashContentValue);
 
-        await Application.Current.MainPage.DisplayAlert("Tittle", "Hello", "OK", "NotOK");
+        if (isUserProvidedValuesValid)
+        {
+            result = oxygenContentValue * ((100 - ashContentValue) / 100);
+            ResultValue = Convert.ToString(result);
+        }
     }
 }

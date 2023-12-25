@@ -11,9 +11,9 @@ public partial class DeterminationOfNitrogenViewModel : BaseViewModel
     [ObservableProperty]
     private decimal ashContentValue;
 
-    private decimal selectedNitrogenValue;
+    private byte selectedNitrogenValue;
 
-    public decimal SelectedNitrogenValue
+    public byte SelectedNitrogenValue
     {
         get => selectedNitrogenValue;
         set
@@ -54,16 +54,18 @@ public partial class DeterminationOfNitrogenViewModel : BaseViewModel
 
     public DeterminationOfNitrogenViewModel()
     {
-        Title = "Slāpekļa satura noteikšana sausā šķeldā";
         ResultValue = string.Empty;
     }
 
     [RelayCommand]
     private async Task CalculateNitrogen()
     {
-        result = nitrogenContentValue * ((100 - ashContentValue) / 100);
-        ResultValue = Convert.ToString(result);
+        await ValidateUserProvidedValues(nitrogenContentValue, ashContentValue);
 
-        await Application.Current.MainPage.DisplayAlert("Tittle", "Hello", "OK", "NotOK");
+        if (isUserProvidedValuesValid)
+        {
+            result = nitrogenContentValue * ((100 - ashContentValue) / 100);
+            ResultValue = Convert.ToString(result);
+        }
     }
 }

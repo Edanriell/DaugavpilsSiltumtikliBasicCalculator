@@ -3,7 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DaugavpilsSiltumtikliBasicCalculator.DeterminationOfOxygenPage"
              xmlns:viewmodel="clr-namespace:DaugavpilsSiltumtikliBasicCalculator.ViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              Title="Skābekļa satura noteikšana sausā šķeldā">
+
+    <ContentPage.Resources>
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="DarkRed" />
+        </Style>
+        <Style x:Key="ValidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="DarkGreen" />
+        </Style>
+    </ContentPage.Resources>
+
     <VerticalStackLayout>
         <VerticalStackLayout Margin="0,60,0,20" WidthRequest="320">
             <Label 
@@ -16,7 +27,17 @@
                 x:Name="OxygenContentOfDryAshlessWoodChips"
                 Text="{Binding OxygenContentValue}"
                 Keyboard="Numeric"
-                HorizontalOptions="FillAndExpand"/>
+                HorizontalOptions="FillAndExpand">
+                <Entry.Behaviors>
+                    <toolkit:NumericValidationBehavior 
+                            InvalidStyle="{StaticResource InvalidEntryStyle}"
+                            ValidStyle="{StaticResource ValidEntryStyle}"
+                            Flags="ValidateOnValueChanged"
+                            MinimumValue="0.1"
+                            MaximumValue="100"
+                            MaximumDecimalPlaces="4" />
+                </Entry.Behaviors>
+            </Entry>
             <Picker x:Name="WoodType" Title="Koksnes veids" SelectedIndex="{Binding SelectedOxygenValue}">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
@@ -42,7 +63,17 @@
                 x:Name="AshContentInDryWoodChips"
                 Text="{Binding AshContentValue}"
                 Keyboard="Numeric"
-                HorizontalOptions="FillAndExpand"/>
+                HorizontalOptions="FillAndExpand">
+                <Entry.Behaviors>
+                    <toolkit:NumericValidationBehavior 
+                        InvalidStyle="{StaticResource InvalidEntryStyle}"
+                        ValidStyle="{StaticResource ValidEntryStyle}"
+                        Flags="ValidateOnValueChanged"
+                        MinimumValue="0.1"
+                        MaximumValue="100"
+                        MaximumDecimalPlaces="4" />
+                </Entry.Behaviors>
+            </Entry>
         </VerticalStackLayout>
 
         <HorizontalStackLayout HorizontalOptions="Center" Margin="0,40,0,20" WidthRequest="320">
@@ -54,6 +85,7 @@
             <Label 
                 x:Name="ResultValue"
                 HorizontalOptions="Start"
+                Margin="0,0,10,0"
                 Text="{Binding ResultValue}"/>
         </HorizontalStackLayout>
 

@@ -2,11 +2,6 @@
 
 public partial class MainPageViewModel : BaseViewModel
 {
-    public MainPageViewModel()
-    {
-        Title = "Ķīmisko elementu noteikšana sausā šķeldā";
-    }
-
     [RelayCommand]
     async Task GoToDeterminationOfHydrogen()
     {

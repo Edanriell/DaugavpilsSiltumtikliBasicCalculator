@@ -54,16 +54,18 @@ public partial class DeterminationOfHydrogenViewModel : BaseViewModel
 
     public DeterminationOfHydrogenViewModel()
     {
-        Title = "Ūdeņraža satura noteikšana sausā šķeldā";
         ResultValue = string.Empty;
     }
 
     [RelayCommand]
     private async Task CalculateHydrogen()
     {
-        result = hydrogenContentValue * ((100 - ashContentValue) / 100);
-        ResultValue = Convert.ToString(result);
+        await ValidateUserProvidedValues(hydrogenContentValue, ashContentValue);
 
-        await Application.Current.MainPage.DisplayAlert("Tittle", "Hello", "OK", "NotOK");
+        if (isUserProvidedValuesValid)
+        {
+            result = hydrogenContentValue * ((100 - ashContentValue) / 100);
+            ResultValue = Convert.ToString(result);
+        }
     }
 }
