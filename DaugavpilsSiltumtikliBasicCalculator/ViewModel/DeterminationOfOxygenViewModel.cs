@@ -65,7 +65,7 @@ public partial class DeterminationOfOxygenViewModel : BaseViewModel
         if (isUserProvidedValuesValid)
         {
             result = oxygenContentValue * ((100 - ashContentValue) / 100);
-            ResultValue = Convert.ToString(result);
+            ResultValue = Convert.ToString(result) + "%";
         }
     }
 }

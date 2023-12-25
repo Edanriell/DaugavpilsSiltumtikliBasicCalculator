@@ -38,7 +38,7 @@
                             MaximumDecimalPlaces="4" />
                 </Entry.Behaviors>
             </Entry>
-            <Picker x:Name="WoodType" Title="Koksnes veids" SelectedIndex="{Binding SelectedNitrogenValue}">
+            <Picker x:Name="WoodType" Title="Koksnes veids" Margin="0,10,0,0" SelectedIndex="{Binding SelectedNitrogenValue}">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Nezināms koksnes veids</x:String>

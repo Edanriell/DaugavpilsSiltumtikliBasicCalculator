@@ -65,7 +65,7 @@ public partial class DeterminationOfHydrogenViewModel : BaseViewModel
         if (isUserProvidedValuesValid)
         {
             result = hydrogenContentValue * ((100 - ashContentValue) / 100);
-            ResultValue = Convert.ToString(result);
+            ResultValue = Convert.ToString(result) + "%";
         }
     }
 }

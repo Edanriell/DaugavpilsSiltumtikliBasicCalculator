@@ -65,7 +65,7 @@ public partial class DeterminationOfNitrogenViewModel : BaseViewModel
         if (isUserProvidedValuesValid)
         {
             result = nitrogenContentValue * ((100 - ashContentValue) / 100);
-            ResultValue = Convert.ToString(result);
+            ResultValue = Convert.ToString(result) + "%";
         }
     }
 }
