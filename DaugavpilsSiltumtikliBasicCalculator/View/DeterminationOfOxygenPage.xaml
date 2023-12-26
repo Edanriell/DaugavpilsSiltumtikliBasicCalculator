@@ -97,5 +97,13 @@
             Command="{Binding CalculateOxygenCommand}"
             HorizontalOptions="Center" />
 
+        <Button
+            x:Name="ReturnToPreviousPage"
+            Text="Atpakaļ" 
+            SemanticProperties.Hint="Atgriezites atpakaļ"
+            Margin="0,10,0,0"
+            Command="{Binding ReturnToPreviousPageCommand}"
+            HorizontalOptions="Center" />
+
     </VerticalStackLayout>
 </ContentPage>

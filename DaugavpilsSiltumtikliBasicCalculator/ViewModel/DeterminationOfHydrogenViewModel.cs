@@ -68,4 +68,10 @@ public partial class DeterminationOfHydrogenViewModel : BaseViewModel
             ResultValue = Convert.ToString(result) + "%";
         }
     }
+
+    [RelayCommand]
+    private async Task ReturnToPreviousPage()
+    {
+        await Shell.Current.GoToAsync("..", true);
+    }
 }
